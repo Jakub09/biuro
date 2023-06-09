@@ -1,5 +1,5 @@
-import { User } from '../../user/user';
-import { Document } from '../application';
+import { User } from '../../../../user/user';
+import { Document } from '../document';
 import { InvalidStateException } from '../exceptions/Invalid-state-exception';
 import { PendingDocumentState } from './pending-document-state';
 

@@ -1,5 +1,5 @@
-import { User } from '../../user/user';
-import { Document } from '../application';
+import { User } from '../../../../user/user';
+import { Document } from '../document';
 import { InvalidStateException } from '../exceptions/Invalid-state-exception';
 import { PendingDocumentState } from './pending-document-state';
 
@@ -19,7 +19,7 @@ describe('unverified document state', () => {
 
     it('sets document state to pending when verified by applicant', () => {
       document.setVerifiedByApplicant(applicant);
-      console.log(document.getState());
+
       expect(document.getState()).toEqual(new PendingDocumentState(document));
     });
   });

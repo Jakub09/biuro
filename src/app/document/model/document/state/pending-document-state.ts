@@ -1,6 +1,6 @@
-import { User } from '../../user/user';
+import { User } from '../../../../user/user';
 
-import { Document } from '../application';
+import { Document } from '../document';
 import { DocumentState } from './document.state';
 
 export class PendingDocumentState extends DocumentState {
