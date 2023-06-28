@@ -1,9 +1,9 @@
 import { Prop, Schema } from '@nestjs/mongoose';
 import { User } from 'src/app/user/user';
-import { IndentifiableEntitySchema } from 'src/database/identifiable-entity.schema';
+import { IdentifiableEntitySchema } from 'src/database/identifiable-entity.schema';
 import { Attachment } from '../model/attachment';
 @Schema()
-export class DocumentSchema extends IndentifiableEntitySchema {
+export class DocumentSchema extends IdentifiableEntitySchema {
   @Prop()
   title: string;
   @Prop()

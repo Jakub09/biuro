@@ -1,10 +1,10 @@
-import { EnitySchemaFactory } from 'src/database/entity-schema.factory';
+import { EntitySchemaFactory } from 'src/database/entity-schema.factory';
 import { DocumentSchema } from './document.schema';
 import { Document } from '../model/document/document';
 import { ObjectId } from 'mongodb';
 
 export class DocumentSchemaFactory
-  implements EnitySchemaFactory<DocumentSchema, Document>
+  implements EntitySchemaFactory<DocumentSchema, Document>
 {
   create(entity: Document): DocumentSchema {
     return {
