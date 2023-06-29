@@ -9,7 +9,7 @@ export class DocumentSchemaFactory
   create(entity: Document): DocumentSchema {
     return {
       _id: new ObjectId(entity.getId()),
-      applicant: entity.getAplicant(),
+      applicant: entity.getApplicant(),
       attachments: entity.getAttachments(),
       content: entity.getContent(),
       title: entity.getTitle(),

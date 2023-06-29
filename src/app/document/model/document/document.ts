@@ -10,7 +10,7 @@ export class Document extends AggregateRoot {
     title: string,
     _id: string,
     content: string,
-    attachments: Attachment[],
+    attachments?: Attachment[],
   ) {
     super();
     this.documentState = new UnverifiedDocumentState(this);
@@ -41,7 +41,7 @@ export class Document extends AggregateRoot {
   getId(): string {
     return this.id;
   }
-  getAplicant(): User {
+  getApplicant(): User {
     return this.applicant;
   }
   getAttachments(): Attachment[] {
