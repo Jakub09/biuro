@@ -9,7 +9,7 @@ export class UnverifiedDocumentState extends DocumentState {
     throw new Error('Method not implemented.');
   }
   setVerifiedByApplicant(applicant: User) {
-    if (this.document.applicant.equals(applicant)) {
+    if (this.document.getApplicant().equals(applicant)) {
       this.document.setState(new PendingDocumentState(this.document));
     } else {
       throw new InvalidStateException(
