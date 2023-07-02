@@ -3,10 +3,17 @@ import { InvalidStateException } from './exceptions/Invalid-state-exception';
 import { PendingDocumentState } from './state/pending-document-state';
 import { Document } from './document';
 import { UnverifiedDocumentState } from './state/unverified-document-state';
+import { Attachment } from '../attachment';
 
 describe('Document', () => {
   const applicant = new User('q');
-  const document = new Document(applicant);
+  const document = new Document(
+    applicant,
+    'fsfdsf',
+    'abc',
+    'fsdfsa',
+    new Array<Attachment>(),
+  );
   const otherUser = new User('w');
 
   describe('new Document', () => {
