@@ -1,6 +1,7 @@
 import { User } from '../../../../user/user';
+import { Attachment } from '../../attachment';
 import { Document } from '../document';
-import { InvalidStateException } from '../exceptions/Invalid-state-exception';
+import { ActionNotAllowedInCurrentStateException } from '../exceptions/action-not-allowed-in-current-state.exception.ts';
 import { PendingDocumentState } from './pending-document-state';
 
 export abstract class DocumentState {
@@ -11,4 +12,5 @@ export abstract class DocumentState {
   abstract setVerifiedByApplicant(applicant: User);
   abstract sendToApproval();
   abstract accept();
+  abstract addAttachment(attachment: Attachment): void;
 }

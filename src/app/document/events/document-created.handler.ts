@@ -6,6 +6,6 @@ export class DocumentCreatedHandler
   implements IEventHandler<DocumentCreatedEvent>
 {
   handle(event: DocumentCreatedEvent): Promise<void> {
-    throw new Error('Method not implemented.');
+    return;
   }
 }

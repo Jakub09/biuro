@@ -1,17 +1,24 @@
 import { User } from '../../../../user/user';
+import { Attachment } from '../../attachment';
 import { Document } from '../document';
-import { InvalidStateException } from '../exceptions/Invalid-state-exception';
+import { ActionNotAllowedInCurrentStateException } from '../exceptions/action-not-allowed-in-current-state.exception.ts';
 import { PendingDocumentState } from './pending-document-state';
 
 describe('unverified document state', () => {
-  const applicant = new User('q');
-  const document = new Document(applicant);
-  const otherUser = new User('w');
+  const applicant = new User('q', 'q');
+  const document = new Document(
+    applicant,
+    'fsfdsf',
+    'abc',
+    'fsdfsa',
+    new Array<Attachment>(),
+  );
+  const otherUser = new User('w', 'q');
 
   describe('setVerifiedByApplicant', () => {
     it('does not allow to be verified by other users', () => {
       expect(() => document.setVerifiedByApplicant(otherUser)).toThrowError(
-        new InvalidStateException(
+        new ActionNotAllowedInCurrentStateException(
           'The document can only be verified by the applicant!',
         ),
       );

@@ -9,7 +9,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     DocumetnsModule,
-    MongooseModule.forRoot('mongodb://localhost/27017'),
+    MongooseModule.forRoot('mongodb://192.168.0.148:27017/'),
   ],
   controllers: [AppController, EmailController],
   providers: [AppService],

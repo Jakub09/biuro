@@ -6,7 +6,10 @@ import { DocumentEntityRepository } from './db/document-entity.repository';
 
 @Controller('documents')
 export class DocumentsController {
-  constructor(private documentRepo:DocumentEntityRepository, private readonly commandBus: CommandBus) {}
+  constructor(
+    private documentRepo: DocumentEntityRepository,
+    private readonly commandBus: CommandBus,
+  ) {}
   @Post()
   async createDocument(
     @Body() createDocumentRequest: CreateDocumentRequest,
@@ -14,5 +17,6 @@ export class DocumentsController {
     await this.commandBus.execute<CreateDocumentCommand, void>(
       new CreateDocumentCommand(createDocumentRequest),
     );
+    this.documentRepo.findAll();
   }
 }

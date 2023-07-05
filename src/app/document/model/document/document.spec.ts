@@ -1,12 +1,12 @@
 import { User } from '../../../user/user';
-import { InvalidStateException } from './exceptions/Invalid-state-exception';
+import { ActionNotAllowedInCurrentStateException } from './exceptions/action-not-allowed-in-current-state.exception.ts';
 import { PendingDocumentState } from './state/pending-document-state';
 import { Document } from './document';
 import { UnverifiedDocumentState } from './state/unverified-document-state';
 import { Attachment } from '../attachment';
 
 describe('Document', () => {
-  const applicant = new User('q');
+  const applicant = new User('q', 'w');
   const document = new Document(
     applicant,
     'fsfdsf',
@@ -14,7 +14,7 @@ describe('Document', () => {
     'fsdfsa',
     new Array<Attachment>(),
   );
-  const otherUser = new User('w');
+  const otherUser = new User('w', 'q');
 
   describe('new Document', () => {
     it('creates new document with unverified state', () => {

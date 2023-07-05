@@ -3,10 +3,11 @@ import { User } from '../../../user/user';
 import { DocumentState } from './state/document.state';
 import { AggregateRoot } from '@nestjs/cqrs';
 import { UnverifiedDocumentState } from './state/unverified-document-state';
+import { Applicant } from 'src/app/user/applicant';
 
 export class Document extends AggregateRoot {
   constructor(
-    applicant: User,
+    applicant: Applicant,
     title: string,
     _id: string,
     content: string,
@@ -45,7 +46,11 @@ export class Document extends AggregateRoot {
     return this.applicant;
   }
   getAttachments(): Attachment[] {
-    return [...this.attachments];
+    if (this.attachments) {
+      return [...this.attachments];
+    } else {
+      return Array<Attachment>();
+    }
   }
   getContent(): string {
     return this.content;

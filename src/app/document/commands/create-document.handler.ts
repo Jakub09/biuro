@@ -1,3 +1,4 @@
+import { Applicant } from 'src/app/user/applicant';
 import { DocumentFactory } from '../document.fatory';
 import { CreateDocumentCommand } from './create-document.command';
 import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
@@ -11,9 +12,14 @@ export class CreateDocumentHandler
     private readonly eventPublisher: EventPublisher,
   ) {}
   async execute(command: CreateDocumentCommand): Promise<void> {
-    const { title, applicant, content } = command.createDocumentReaquest;
+    const { title, applicantEmail, content } = command.createDocumentReaquest;
+
     const document = this.eventPublisher.mergeObjectContext(
-      await this.documentFactory.create(title, content, applicant),
+      await this.documentFactory.create(
+        title,
+        content,
+        new Applicant('ff', applicantEmail),
+      ),
     );
     document.commit();
   }

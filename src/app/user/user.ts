@@ -1,5 +1,7 @@
+import { EmailAdress } from 'src/email/model/email-address';
+
 export class User {
-  constructor(id: string) {
+  constructor(id: string, private readonly email: EmailAdress) {
     this.id = id;
   }
   id: string;
