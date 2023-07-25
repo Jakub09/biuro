@@ -8,17 +8,16 @@ import { Applicant } from 'src/app/user/applicant';
 export class Document extends AggregateRoot {
   constructor(
     applicant: Applicant,
-    title: string,
+
     _id: string,
-    content: string,
+
     attachments?: Attachment[],
   ) {
     super();
     this.documentState = new UnverifiedDocumentState(this);
     this.applicant = applicant;
     this.attachments = attachments;
-    this.content = content;
-    this.title = title;
+
     this.id = _id;
   }
 

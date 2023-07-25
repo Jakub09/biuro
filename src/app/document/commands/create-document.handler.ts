@@ -12,11 +12,11 @@ export class CreateDocumentHandler
     private readonly eventPublisher: EventPublisher,
   ) {}
   async execute(command: CreateDocumentCommand): Promise<void> {
-    const { title, applicantEmail, content } = command.createDocumentReaquest;
+    const { attachment, department, applicantEmail, content } =
+      command.createDocumentReaquest;
 
     const document = this.eventPublisher.mergeObjectContext(
       await this.documentFactory.create(
-        title,
         content,
         new Applicant('ff', applicantEmail),
       ),

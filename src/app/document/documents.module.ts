@@ -8,6 +8,8 @@ import { DocumentEventsHandlers } from './events';
 import { DocumentCommandHandlers } from './commands';
 import { MongooseModule, SchemaFactory } from '@nestjs/mongoose';
 import { DocumentSchema } from './db/document.schema';
+import { EmailService } from 'src/email/email.service';
+import { AppModule } from 'src/app.module';
 
 @Module({
   imports: [
@@ -21,6 +23,7 @@ import { DocumentSchema } from './db/document.schema';
   ],
   controllers: [DocumentsController],
   providers: [
+    EmailService,
     DocumentEntityRepository,
     DocumentFactory,
     DocumentSchemaFactory,

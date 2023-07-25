@@ -18,10 +18,8 @@ export class DocumentSchemaFactory
   createFromSchema(enitySchema: DocumentSchema): Document {
     return new Document(
       enitySchema.applicant,
-      enitySchema.title,
+
       enitySchema._id.toHexString(),
-      enitySchema.content,
-      enitySchema.attachments,
     );
   }
 }

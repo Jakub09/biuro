@@ -5,13 +5,19 @@ import { EmailController } from './email/email.controller';
 
 import { DocumetnsModule } from './app/document/documents.module';
 import { MongooseModule } from '@nestjs/mongoose';
+import { EmailService } from './email/email.service';
+import { ConfigModule } from '@nestjs/config';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     DocumetnsModule,
-    MongooseModule.forRoot('mongodb://192.168.0.148:27017/'),
+    MongooseModule.forRoot(process.env.DATABASE_HOST),
   ],
   controllers: [AppController, EmailController],
-  providers: [AppService],
+  providers: [AppService, EmailService],
 })
 export class AppModule {}

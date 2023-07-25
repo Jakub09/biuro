@@ -11,19 +11,10 @@ export class DocumentFactory implements EntityFactory<Document> {
   constructor(
     private readonly documentEntityRepository: DocumentEntityRepository,
   ) {}
-  async create(
-    title: string,
-    content: string,
-    applicant: User,
-  ): Promise<Document> {
-    const newDocument = new Document(
-      applicant,
-      title,
-      new ObjectId().toHexString(),
-      content,
-    );
+  async create(content: string, applicant: User): Promise<Document> {
+    const newDocument = new Document(applicant, new ObjectId().toHexString());
     await this.documentEntityRepository.create(newDocument);
-    newDocument.apply(new DocumentCreatedEvent(newDocument.getId()));
+    newDocument.apply(new DocumentCreatedEvent(newDocument));
     return newDocument;
   }
 }
