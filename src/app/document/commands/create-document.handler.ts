@@ -1,7 +1,16 @@
 import { Applicant } from 'src/app/user/applicant';
 import { DocumentFactory } from '../document.fatory';
 import { CreateDocumentCommand } from './create-document.command';
-import { CommandHandler, EventPublisher, ICommandHandler } from '@nestjs/cqrs';
+import {
+  CommandBus,
+  CommandHandler,
+  EventPublisher,
+  ICommandHandler,
+} from '@nestjs/cqrs';
+import { ObjectId } from 'mongoose';
+import { UserEntityRepository } from 'src/app/user/db/user-entity.repository';
+import { EmailAddress } from 'src/email/model/email-address';
+import { error } from 'console';
 
 @CommandHandler(CreateDocumentCommand)
 export class CreateDocumentHandler
@@ -18,7 +27,7 @@ export class CreateDocumentHandler
     const document = this.eventPublisher.mergeObjectContext(
       await this.documentFactory.create(
         content,
-        new Applicant('ff', applicantEmail),
+        new Applicant(' fdfd', new EmailAddress(applicantEmail)),
       ),
     );
     document.commit();

@@ -10,6 +10,7 @@ export class EmailService {
   ) {
     console.log(`email sent to ${emailAddres} , with content ${emailTemplate}`);
   }
+  async sendVerificationEmail(email: EmailAddress) {}
   async sendEmailTest() {
     const sesClient = new SES({
       region: process.env.AWS_REGION,

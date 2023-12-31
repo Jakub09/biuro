@@ -1,3 +1,6 @@
 export class EmailAddress {
-  constructor(email: string) {}
+  constructor(private email: string) {}
+  toString(): string {
+    return this.email;
+  }
 }

@@ -7,7 +7,6 @@ import { DocumetnsModule } from './app/document/documents.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { EmailService } from './email/email.service';
 import { ConfigModule } from '@nestjs/config';
-import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
